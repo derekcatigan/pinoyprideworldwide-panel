@@ -83,8 +83,7 @@ defineOptions({
                     </fieldset>
                     <fieldset class="fieldset flex-1 min-w-[200px]">
                         <legend class="fieldset-legend text-sm">Remarks:</legend>
-                        <input type="text" v-model="form.remarks" class="w-full input"
-                            placeholder="Enter Invoice number">
+                        <input type="text" v-model="form.remarks" class="w-full input" placeholder="Enter Remarks">
                     </fieldset>
                 </div>
                 <button type="submit" class="btn btn-block btn-primary mt-5" :disabled="form.processing">Update

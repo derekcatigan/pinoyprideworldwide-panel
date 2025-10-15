@@ -250,7 +250,7 @@ defineOptions({
                     </fieldset>
                 </div>
 
-                <button type="submit" class="btn btn-block btn-primary mt-10" :disabled="form.processing">Create
+                <button type="submit" class="btn btn-block btn-primary mt-10" :disabled="form.processing">Update
                     Account</button>
             </form>
         </template>
