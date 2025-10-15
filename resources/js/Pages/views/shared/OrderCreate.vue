@@ -88,7 +88,7 @@ watch([() => form.boxType, () => form.branch_id, () => form.location_id],
     })
 
 // Rate per Cubic Foot
-const ratePerCubicFoot = 25
+const ratePerCubicFoot = 10
 
 watch(
     () => [form.boxType, form.length, form.height, form.width],
