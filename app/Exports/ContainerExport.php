@@ -27,12 +27,19 @@ class ContainerExport implements FromArray, WithHeadings, WithTitle
             'Container Number',
             'Branch',
             'Invoice Number',
-            'Sender',
-            'Receiver',
+            'Sender Name',
+            'Sender Contact',
+            'Sender Email',
+            'Sender Address',
+            'Receiver Name',
+            'Receiver Contact',
+            'Receiver Email',
+            'Receiver Address',
             'Box Type',
             'Quantity',
             'Dimensions (LxHxW)',
-            'Fee',
+            'Fee (per box)',
+            'Total Fee',
         ];
     }
 
@@ -49,11 +56,18 @@ class ContainerExport implements FromArray, WithHeadings, WithTitle
                     $this->container->branch?->branch_name ?? 'N/A',
                     $order->invoice_number,
                     $order->sender_name,
+                    $order->sender_contact,
+                    $order->sender_email,
+                    $order->sender_address,
                     $order->receiver_name,
+                    $order->receiver_contact,
+                    $order->receiver_email,
+                    $order->receiver_address,
                     ucfirst($box->box_type),
                     $box->quantity,
                     "{$box->length}x{$box->height}x{$box->width}",
                     $box->fee,
+                    $box->fee * $box->quantity,
                 ];
             }
         }

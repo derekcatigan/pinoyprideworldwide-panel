@@ -33,7 +33,14 @@ class LoadContainerController extends Controller
 
         $orders = $query->paginate(10);
 
-        $containers = Container::with('branch')->where('branch_id', $user->branch_id)->latest()->get();
+
+        $containers = Container::with('branch')
+            ->where('branch_id', $user->branch_id)
+            ->whereDoesntHave('containerOrders.order.trackings', function ($query) {
+                $query->whereIn('status', ['In Transit', 'Departed Vessel']);
+            })
+            ->latest()
+            ->get();
 
         return Inertia::render('views/branch/LoadContainer', [
             'orders' => $orders,
