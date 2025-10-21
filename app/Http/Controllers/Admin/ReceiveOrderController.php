@@ -32,7 +32,7 @@ class ReceiveOrderController extends Controller
             ->groupBy('orders.branch_id', 'box_locations.location', 'order_boxes.box_type')
             ->get();
 
-        return Inertia::render('views/admin/ReveiveOrder', [
+        return Inertia::render('views/admin/ReceiveOrder', [
             'branches' => $branches,
             'boxTotals' => $boxTotals,
         ]);
