@@ -31,6 +31,11 @@ class Order extends Model
         return $this->hasMany(OrderBox::class);
     }
 
+    public function branch()
+    {
+        return $this->belongsTo(Branch::class, 'branch_id', 'id');
+    }
+
     public function boxLocation()
     {
         return $this->belongsTo(BoxLocation::class, 'location_id', 'id');

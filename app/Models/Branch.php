@@ -20,4 +20,9 @@ class Branch extends Model
     {
         return $this->hasOne(User::class);
     }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }
