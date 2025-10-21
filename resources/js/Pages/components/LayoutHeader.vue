@@ -55,7 +55,7 @@ function logout() {
             <ul tabindex="0"
                 class="dropdown-content menu bg-base-100 border border-gray-300 rounded-box z-1 w-52 p-2 shadow-sm">
                 <li>
-                    <Link>Profile</Link>
+                    <Link :href="route('profile.index')">Profile</Link>
                 </li>
                 <li class="mb-1">
                     <Link>Settings</Link>

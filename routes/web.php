@@ -15,6 +15,7 @@ use App\Http\Controllers\Branch\LoadContainerController;
 use App\Http\Controllers\Shared\BoxController;
 use App\Http\Controllers\Shared\ContainerController;
 use App\Http\Controllers\Shared\OrderController;
+use App\Http\Controllers\Shared\ProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -112,6 +113,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/order/list', [OrderController::class, 'index'])->name('order.list');
         Route::get('/order/create', [OrderController::class, 'create'])->name('order.create');
         Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
+
+        // Profile Controller
+        Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+        Route::post('/profile/change-password', [ProfileController::class, 'changePassword'])
+            ->middleware('auth')
+            ->name('profile.change-password');
     });
 
     /* ----------------------- Authenticated Users Logout ----------------------- */
