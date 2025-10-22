@@ -9,9 +9,12 @@ const currentLink = computed(() => page.url);
 </script>
 
 <template>
-    <div v-if="user?.role && sidebarLinks[user.role]" class="min-h-full p-2">
+    <div v-if="user?.role && sidebarLinks[user.role]" class="h-screen overflow-y-auto p-2">
         <ul v-for="group in sidebarLinks[user.role]" :key="group.title" class="flex flex-col gap-1 mb-1 text-gray-300">
-            <span class="text-sm text-gray-500 font-semibold">{{ group.title }}</span>
+            <span class="text-sm text-gray-500 font-semibold">
+                {{ group.title }}
+            </span>
+
             <li v-for="item in group.items" :key="item.label">
                 <Link :href="item.link" :class="[
                     'flex items-center gap-2 p-2 rounded',
