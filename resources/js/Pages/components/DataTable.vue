@@ -22,7 +22,9 @@ defineProps({
                 <tr>
                     <th v-for="(header, index) in headers" :key="index"
                         class="px-4 py-2 text-left text-sm font-semibold text-gray-600 border-b border-gray-300">
-                        {{ header }}
+                        <slot name="header" :header="header" :index="index">
+                            {{ header }}
+                        </slot>
                     </th>
                 </tr>
             </thead>

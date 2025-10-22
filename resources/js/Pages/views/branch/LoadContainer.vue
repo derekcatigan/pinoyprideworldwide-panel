@@ -52,6 +52,19 @@ function LoadOrders() {
     })
 }
 
+const isAllSelected = computed(() => {
+    return orders.value.data?.length > 0 &&
+        selectedOrderBoxes.value.length === orders.value.data.length
+})
+
+function toggleSelectAll() {
+    if (isAllSelected.value) {
+        selectedOrderBoxes.value = []
+    } else {
+        selectedOrderBoxes.value = orders.value.data.map(order => order.id)
+    }
+}
+
 defineOptions({
     layout: Layout
 })
@@ -87,6 +100,12 @@ defineOptions({
             <DataTable
                 :headers="['', 'Invoice #', 'Sender Name', 'Sender Address', 'Receiver Name', 'Receiver Address', 'Box Type', 'Quantity']"
                 :rows="orders.data">
+                <template #header="{ header, index }">
+                    <input v-if="index === 0" type="checkbox" class="checkbox" @change="toggleSelectAll"
+                        :checked="isAllSelected" />
+                    <span v-else>{{ header }}</span>
+                </template>
+
                 <template #row="{ row: order }">
                     <td class="font-semibold">
                         <input type="checkbox" class="checkbox" :value="order.id"
